@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>DCV questions</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+    <style>
+    span.b {
+  display: none;
+  color: lightgreen;
+  font-weight: bold;
+}
+    </style>
+
+
+</head>
+<body>
+
+<div class="container">
+    <h4>Питања за испит у ДЦВ</h4><br>
+
+        <h3>{{ questGroup.groupName }}</h3>
+
+        {% for item in questions %}
+            <h5>{{ item.questionText }}</h5>
+            <p>
+                {% for items in answers %}
+                    {% if items.theQuestion.id == item.id %}
+
+                <input type="radio" id="{{ items.id }}" name="{{item.id}}" value="{{ items.id }}">
+                        <label for="{{ items.id }}">{{ items.answer }}</label>
+                        {% if items.trueAnswer %}
+                        &nbsp;<span class="b" id="mySpan">True</span>
+                        {% endif %}<br>
+                    {% endif %}
+                {% endfor %}
+            </p>
+        {% endfor %}
+    <button id="butt1" onclick="myFunction()">Провера</button>
+
+
+</div>
+
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
+<script>
+function myFunction() {
+  var x = document.getElementsByClassName("b");
+  var y = document.getElementById("butt1");
+  y.textContent ="Следеће";
+  for (var i=0;i<x.length; i++){
+    x[i].style.display = "inline-block";
+  }
+  var currentPage=window.location.pathname;
+  var nextPage='';
+  switch(currentPage) {
+    case '/':
+        nextPage='/page1';
+        console.log(nextPage);
+        break;
+    case '/page1':
+        nextPage='/page2';
+        console.log(nextPage);
+        break;
+    case '/page2':
+        nextPage='/page3';
+        console.log(nextPage);
+        break;
+    case '/page3':
+        nextPage='/page4';
+        console.log(nextPage);
+        break;
+    case '/page4':
+        nextPage='/page5';
+        console.log(nextPage);
+        break;
+    case '/page5':
+        nextPage='/page6';
+        console.log(nextPage);
+        break;
+    case '/page6':
+        nextPage='/page7';
+        console.log(nextPage);
+        break;
+    case '/page7':
+        nextPage='/page8';
+        console.log(nextPage);
+        break;
+    case '/page8':
+        nextPage='/page9';
+        console.log(nextPage);
+        break;
+    case '/page9':
+        nextPage='/page10';
+        console.log(nextPage);
+        break;
+    case '/page10':
+        nextPage='/page11';
+        console.log(nextPage);
+        break;
+    case '/page11':
+        nextPage='/page12';
+        console.log(nextPage);
+        break;
+    case '/page12':
+        nextPage='/page13';
+        console.log(nextPage);
+        break;
+    case '/page13':
+        nextPage='/page14';
+        console.log(nextPage);
+        break;		
+    default:
+        nextPage='/';
+        console.log(nextPage);
+        console.log(nextPage);
+  }
+    y.onclick=function() { window.open(nextPage, "_self");};
+  console.log(nextPage);
+}
+</script>
+
+
+
+  </body>
+</body>
+</html>
